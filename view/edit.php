@@ -15,6 +15,8 @@
 
 ?>
 
+<?php require_once 'view/header.php';?>
+
 <div id="edit_message">
 	<h2>Edit To-do</h2>
 	<form action="./index.php?u=<?php echo($USER_ID);?>" method="post">
@@ -26,3 +28,4 @@
 		</p>
 	</form>
 </div>
+<?php require_once 'view/footer.php';?>
