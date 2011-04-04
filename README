@@ -1,0 +1,3 @@
+"LAMP To-do List" by Scott VonSchilling
+
+A basic To-do List web application created to run in a LAMP setup. Edit your MySQL configurations in the db_config.php file.
