@@ -1,6 +1,6 @@
 <?php
 function renderList($todo){
-	global $USER_ID;
+	global $USER_ID, $ajax;
 	if ($todo){
 		$myCurrentStatus = 0;
 		$myNextStatus = 1;
@@ -26,24 +26,29 @@ function renderList($todo){
 	while ($row = mysql_fetch_array($result)){
 		$id = $row['todoId'];
 		$message = $row['message'];
+		$mess2 = $message;
 		if (!$todo)
-			$message = "<del>".$message."</del>";
+			$mess2 = "<del>".$message."</del>";
 		$s .= "<div id='todo_$id'>";
 		$s .= "<span class='item'>";
-		if ($_GET['ajax'] == "true")
-			$s .= "<input type='checkbox' onclick='doItem($id,$myNextStatus)' $myChecked /> ";
+		if ($ajax)
+			$s .= "<input type='checkbox' value='$id' $myChecked /> ";
 		else 
 			$s .= ++$count.") ";
-		$s .= $message;
+		$s .= $mess2;
 		$s .= "</span> ";
-		if ($_GET['ajax'] != "true")
-			$s .= "<a href='./index.php?u=$USER_ID&amp;a=toggle&amp;status=$myNextStatus&amp;m=$id'>[$myMark]</a>";
+		if (!$ajax)
+			$s .= "<a href='./index.php?u=$USER_ID&amp;a=toggle&amp;status=$myNextStatus&amp;m=$id'> [$myMark]</a> ";
 		
-		$s .= "
-				<a href='./index.php?u=$USER_ID&amp;v=edit&amp;m=$id'>[edit]</a>
-				<a href='./index.php?u=$USER_ID&amp;a=delete&amp;m=$id' >[x]</a>
-			   ";
-		$s .= "</div>";
+		$s .= "<span class='options'>";
+		if ($ajax){
+			$s .= "<button name='edit,$id' value='$message'>edit</button>
+				<button name='delete,$id'>delete</button>";
+		} else {
+			$s .= "<a href='./index.php?u=$USER_ID&amp;v=edit&amp;m=$id'>[edit]</a>
+				<a href='./index.php?u=$USER_ID&amp;a=delete&amp;m=$id' >[x]</a>";
+		}
+		$s .= "</span></div>";
 	}
 	return $s;
 	

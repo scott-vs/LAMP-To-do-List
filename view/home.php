@@ -14,7 +14,7 @@ $userName = $userName[0];
 <?php require_once 'view/header.php';?>
 
 <div id="welcome">
-	<?php echo ("Hello $userName! <a href='../index.php?a=signout'>[Log out]</a>");?>
+	<?php echo ("Hello $userName! <a id='signout_btn' href='./index.php?a=signout'>[Log out]</a>");?>
 </div>
 <h1>To Do:</h1>
 <div id="todolist">
@@ -23,7 +23,7 @@ $userName = $userName[0];
 	?>	
 </div>
 <div>
-	<form action="./index.php?u=<?php echo($USER_ID); ?>" method="post">
+	<form id="addform" action="./index.php?u=<?php echo($USER_ID); ?>" method="post">
 		<p>
 			Add a new to-do: <input id="addtolist" name="add_text" type="text"/>
 			<input name="addFormSubmit" type="hidden" value="true" />
