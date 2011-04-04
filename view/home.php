@@ -13,29 +13,34 @@ $userName = $userName[0];
 
 <?php require_once 'view/header.php';?>
 
-<div id="welcome">
+<div id="welcome" class="span-20 prepend-10">
 	<?php echo ("Hello $userName! <a id='signout_btn' href='./index.php?a=signout'>[Log out]</a>");?>
 </div>
-<h1>To Do:</h1>
-<div id="todolist">
-	<?php 
-		echo(renderList(true));
-	?>	
+<div class="pape">
+	<h2 class="span-23 prepend-1">To Do:</h2>
+	<div class="span-6 prepend-2">
+	<div id="todolist" >
+		<?php 
+			echo(renderList(true));
+		?>	
+	</div>
+	</div>
+	<div class="span-24 prepend-2">
+		<form id="addform" action="./index.php?u=<?php echo($USER_ID); ?>" method="post">
+			<p>
+				Add a new to-do: <input id="addtolist" name="add_text" type="text"/>
+				<input name="addFormSubmit" type="hidden" value="true" />
+				<input id="addbtn" type="submit" value="add" />
+			</p>
+		</form>
+	</div>
 </div>
-<div>
-	<form id="addform" action="./index.php?u=<?php echo($USER_ID); ?>" method="post">
-		<p>
-			Add a new to-do: <input id="addtolist" name="add_text" type="text"/>
-			<input name="addFormSubmit" type="hidden" value="true" />
-			<input id="addbtn" type="submit" value="add" />
-		</p>
-	</form>
-</div>
-<h1>Done:</h1>
+<h2 class="span-23 prepend-1">Done:</h2>
+<div class="span-6 prepend-2">
 <div id="hasdonelist">
 <?php 
 	echo(renderList(false));
 ?>
 </div>
-
+</div>
 <?php require_once 'view/footer.php';?>

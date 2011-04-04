@@ -29,7 +29,7 @@ function renderList($todo){
 		$mess2 = $message;
 		if (!$todo)
 			$mess2 = "<del>".$message."</del>";
-		$s .= "<div id='todo_$id'>";
+		$s .= "<div id='todo_$id' class='item'>";
 		$s .= "<span class='item'>";
 		if ($ajax)
 			$s .= "<input type='checkbox' value='$id' $myChecked /> ";
@@ -40,15 +40,15 @@ function renderList($todo){
 		if (!$ajax)
 			$s .= "<a href='./index.php?u=$USER_ID&amp;a=toggle&amp;status=$myNextStatus&amp;m=$id'> [$myMark]</a> ";
 		
-		$s .= "<span class='options'>";
+		
 		if ($ajax){
-			$s .= "<button name='edit,$id' value='$message'>edit</button>
-				<button name='delete,$id'>delete</button>";
+			$s .= "<span class='options'><button name='edit,$id' value='$message'>edit</button>
+				<button name='delete,$id'>delete</button><span class='options'>";
 		} else {
 			$s .= "<a href='./index.php?u=$USER_ID&amp;v=edit&amp;m=$id'>[edit]</a>
 				<a href='./index.php?u=$USER_ID&amp;a=delete&amp;m=$id' >[x]</a>";
 		}
-		$s .= "</span></div>";
+		$s .= "</div>";
 	}
 	return $s;
 	

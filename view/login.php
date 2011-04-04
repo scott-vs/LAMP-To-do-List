@@ -11,13 +11,13 @@ if ($_POST["formSubmited"]){
 <div id="login">
     <h2>Login</h2>
     <div id="newuser_mess"><?php echo($newuser_mess); ?></div>
-    <div id="login_error"><?php echo($login_error); ?></div>
+    <div id="login_error" class="error_mess"><?php echo($login_error); ?></div>
 	<form action="index.php" method="post">
 		<p>
-		User Name: <input type="text" name="username" value="<?php echo($username);?>" /><br />
-		Password: <input type="password" name="password" /><br />
+		<span class="span-2">User Name:</span> <input type="text" name="username" value="<?php echo($username);?>" /><br />
+		<span class="span-2">Password:</span> <input type="password" name="password" /><br />
 		<input type="hidden" name="loginformSubmited" value="true" />
-		<input type="submit" value="login" />
+		<span class="span-2"><input type="submit" value="login" /></span>
 		<input type="checkbox" name="remember" checked="checked" /> Remember Me<br />
 		</p>
 	</form>

@@ -3,8 +3,10 @@ $(document).ready(function(){
 	var ajaxURL = "./action/ajax.php?userID="+user_id;
 	
 	$("#signup_username").change(function(){
-		$("#user_error").load(ajaxURL+"&command=checkname&n="+$("#signup_username").val());
+		$("#user_error").load(ajaxURL+"&command=checkname&name="+$("#signup_username").val());
 	});
+	
+	
 	
 	$("#signout_btn").html("<button>sign out</button>");
 	$("#todolist").load(ajaxURL+"&command=loadList&todo=todo");
@@ -19,6 +21,13 @@ $(document).ready(function(){
 			data:"txt="+$("#addtolist").val(),
 			success:function(response){$("#todolist").html(response);$("#addtolist").val("");}
 		});
+	});
+	
+	$("#todolist,#hasdonelist").delegate(".item","mouseover",function(){
+		$(this).find('.options').css("visibility","visible");
+	});
+	$("#todolist,#hasdonelist").delegate(".item","mouseout",function(){
+		$(this).find('.options').css("visibility","hidden");
 	});
 	
 	$("#todolist,#hasdonelist").delegate("button","click",function(){
