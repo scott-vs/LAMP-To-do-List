@@ -29,26 +29,26 @@ function renderList($todo){
 		$mess2 = $message;
 		if (!$todo)
 			$mess2 = "<del>".$message."</del>";
-		$s .= "<div id='todo_$id' class='item'>";
-		$s .= "<span class='item'>";
+		$s .= '<div id="todo_'.$id.'" class="item">';
+		$s .= '<span class="item">';
 		if ($ajax)
-			$s .= "<input type='checkbox' value='$id' $myChecked /> ";
+			$s .= '<input type="checkbox" value="'.$id.'" '.$myChecked.' /> ';
 		else 
 			$s .= ++$count.") ";
 		$s .= $mess2;
 		$s .= "</span> ";
 		if (!$ajax)
-			$s .= "<a href='./index.php?u=$USER_ID&amp;a=toggle&amp;status=$myNextStatus&amp;m=$id'> [$myMark]</a> ";
+			$s .= '<a href="./index.php?u='.$USER_ID.'&amp;a=toggle&amp;status='.$myNextStatus.'&amp;m='.$id.'"> ['.$myMark.']</a> ';
 		
 		
 		if ($ajax){
-			$s .= "<span class='options'><button name='edit,$id' value='$message'>edit</button>
-				<button name='delete,$id'>delete</button><span class='options'>";
+			$s .= '<span class="options"><button name="edit,'.$id.'" value="'.$message.'">edit</button>
+				<button name="delete,'.$id.'">delete</button><span class="options">';
 		} else {
-			$s .= "<a href='./index.php?u=$USER_ID&amp;v=edit&amp;m=$id'>[edit]</a>
-				<a href='./index.php?u=$USER_ID&amp;a=delete&amp;m=$id' >[x]</a>";
+			$s .= '<a href="./index.php?u='.$USER_ID.'&amp;v=edit&amp;m='.$id.'">[edit]</a>
+				<a href="./index.php?u='.$USER_ID.'&amp;a=delete&amp;m='.$id.'" >[x]</a>';
 		}
-		$s .= "</div>";
+		$s .= '</div>';
 	}
 	return $s;
 	

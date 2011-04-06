@@ -1,5 +1,4 @@
 <?php
-	
 	// Establish global variable USER_ID
 	if (isset($_GET['u']))
 		$USER_ID =  $_GET['u'];
